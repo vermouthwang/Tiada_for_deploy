@@ -1,0 +1,109 @@
+.userpage
+{
+    display: inline-flex;
+    padding: 19px 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    background: url('../iron.png') lightgray 0% 0% / 400.98615825176239px 60.98615825176239px repeat;
+}
+
+.userPageTitle{
+    display: flex;
+    padding: 12px 21px 0px 10px;
+    align-items: left;
+    border-radius: 7px;
+    border: 1px solid #616060;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    text-shadow: 1px -1px 0.5px rgba(255, 255, 255, 0.80);
+    font-family: "IBM Plex Mono";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.predictionDisplay{
+    display: flex;
+    padding: 18px 26px 24px 26px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background: url('../greenbackground.png') lightgray 50% / 400.98615825176239px 400.98615825176239px repeat;
+    box-shadow: 5px 4px 4px 0px rgba(0, 0, 0, 0.25) inset, -10px 4px 9.6px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.predictiontext{
+    color: #A1FFAB;
+    font-family: Helvetica;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.separteLine{
+    width: 350px;
+    height: 5px;
+    /* transform: rotate(-90deg); */
+    border-radius: 6px;
+    background: #6A6969;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.60) inset, 1px 3px 4px -1px #FFF;
+}
+
+.feedback{
+    display: flex;
+    width: 350px;
+    height: 207px;
+    padding: 18px 26px 24px 26px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border-radius: 12px;
+    background: url('../darkgreenbackground.png') rgb(38, 38, 38) 50% / cover no-repeat;
+    box-shadow: 5px 4px 4px 0px rgba(43, 42, 42, 0.25) inset, -10px 4px 9.6px 0px rgba(0, 0, 0, 0.25) inset;
+    color: #A1FFAB;
+
+font-family: Inter;
+font-size: 10px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+    
+}
+
+.feedbacktext{
+    display: flex;
+    width: 350px;
+    height: 207px;
+    padding: 1px 26px 1px 26px;
+    /* transparent background */
+    background: rgba(0, 0, 0, 0);
+    color: #A1FFAB;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: Helvetica;
+    /* no border hightlight */
+    border: none;
+}
+
+.submitfeedback{
+    display: flex;
+    padding: 7px 20px;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 7px;
+    border: 1px solid #616060;
+    
+    background: url(../iron.png) lightgray 50% / cover no-repeat;
+    
+    mix-blend-mode: darken;
+    box-shadow: 1px 1px 2px 0px rgba(255, 255, 255, 0.90) inset, 1px 1px 1px 0px rgba(0, 0, 0, 0.60);
+}

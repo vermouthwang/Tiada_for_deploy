@@ -1,0 +1,81 @@
+
+.doorbackground{
+    display: flex;
+    width: 1024px;
+    height: 1366px;
+    padding: 634px 10px 10px 39px;
+    flex-direction: column;
+    align-items: center;
+    gap: 102px;
+    background-image: url('../iPad-background.png');
+    background-size: cover;
+}
+.buttondiv{
+    display: flex;
+height: 187px;
+padding-left: 301px;
+justify-content: flex-end;
+align-items: center;
+gap: 91px;
+flex-shrink: 0;
+}
+.dooraudiobutton{
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    background-image: url('../button-unpressed.png'); /* Confirm that the path to your image is correct */
+    background-size: cover;
+    background-color: transparent; /* Change to transparent to ensure no color shows through */
+    border: none; /* Removes the border */
+    outline: none; /* Removes the outline */
+    padding: 10px; /* Adds padding to the inside of the button */
+}
+.dooraudiobutton:active{
+    background-image: url('../button-pressed.png'); /* Confirm that the path to your image is correct */
+    background-size: cover;
+}
+
+.textdisplay{
+    width: 700px;
+    height: 364px;
+    flex-shrink: 0;
+    color: #A1FFAB;
+    font-family: Helvetica;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.finaltextdisplay{
+    width: 700px;
+    height: 100px;
+    flex-shrink: 0;
+    color: #A1FFAB;
+    font-family: Helvetica;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.audiobutton{
+    width: 106px;
+    height: 106px;
+    background-image: url('../audiobutton-unpressed.png'); /* Confirm that the path to your image is correct */
+    background-size: cover;
+    background-color: transparent; /* Change to transparent to ensure no color shows through */
+    border: none; /* Removes the border */
+    outline: none; /* Removes the outline */
+}
+
+.audiobutton.pressed{
+    width: 103px;
+    height: 106px;
+    background-image: url('../audiobutton-pressed.png'); /* Confirm that the path to your image is correct */
+    background-size: 98.5%;
+}

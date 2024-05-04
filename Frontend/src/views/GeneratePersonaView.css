@@ -1,0 +1,32 @@
+.testcss{
+    display: flex;
+    width: 1440px;
+    height: 1024px;
+    align-items: flex-start;
+    gap: 10px;
+    background: #1E1E20;
+}
+
+.leftclientbar{
+    display: flex;
+    width: 377px;
+    height: 1024px;
+    padding: 21px 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    background: #2B2B2E;
+}
+
+.functiontitle{
+    width: 323px;
+    height: 43px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: 'SF Pro Display';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
