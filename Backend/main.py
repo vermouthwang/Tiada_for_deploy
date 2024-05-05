@@ -70,7 +70,7 @@ from concepts.predict_response_op import (
 from concepts.audience_feedback import (
     create_a_feedback_record
 )
-origins = ['http://localhost:3000']
+origins = ['https://vermouthwang.github.io']
 
 app.add_middleware(
     CORSMiddleware,
