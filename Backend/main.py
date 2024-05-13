@@ -3,7 +3,12 @@ import pydantic.json
 from fastapi.middleware.cors import CORSMiddleware
 from model import Todo, Persona_Demands, Persona_Generated_Response, Persona, Action, Test_Result, Test_Case, Audio_Record, Audience_doc, Design_Project, Predicted_Audience_Response, Single_Project_Prediction, Audience_feedback
 app = FastAPI()
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi import Request
+# from fastapi.responses import FileResponse
 
+# templates = Jinja2Templates(directory="build")
 
 from database import (
     fetch_one_todo,
@@ -70,8 +75,17 @@ from concepts.predict_response_op import (
 from concepts.audience_feedback import (
     create_a_feedback_record
 )
-origins = ['http://localhost:3000']
+origins = [
+    "http://frontend.yinghou.homes",
+    "https://frontend.yinghou.homes","https://vermouthwang.github.io",
+    "http://10.0.0.146:3000",  # Add your local network URL here
+    "http://localhost:3000",
+]
 # origins = ['http://10.0.0.146:3000']
+
+# serve static files from 'build' directory
+# app.mount("/static", StaticFiles(directory="build", html=True), name="static")
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -82,9 +96,16 @@ app.add_middleware(
 )
 
 @app.get('/')
-async def read_root():
+async def read_root(request: Request):
     response = await fetch_all_todos()
     return {'Hello': 'World'}
+    # return templates.TemplateResponse("index.html", {"request": request, "todos": response})
+
+# @app.get('/')
+# async def read_root(request: Request):
+#     response = await fetch_all_todos()
+#     # return {'Hello': 'World'}
+#     return FileResponse('build/index.html')
 
 @app.get("/api/todo")
 async def get_todo():

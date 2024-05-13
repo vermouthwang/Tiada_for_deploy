@@ -51,10 +51,10 @@ async def get_a_design_project_by_name(project_name: str):
 async def get_all_design_project():
     project_name_list = ["AnotherWorld",
                          "Odyssey",
-                         "Imaginary Physical Prototyping",
-                         "Align: AI Rituals for Human Alignment",
+                        #  "Align: AI Rituals for Human Alignment",
                          "Pixel Persona",
                          "Harnessing the Power  of Video Games to Combat Climate Change"]
+                            #  "Imaginary Physical Prototyping",
     all = []
     for projects in project_name_list:
         document = Design_Project_collection.find_one({"project_name":projects})

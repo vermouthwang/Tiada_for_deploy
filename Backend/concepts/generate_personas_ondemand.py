@@ -22,7 +22,7 @@ generate_collection = database.generated_collection
 persona_collection = database.persona_collection
 
 #set up the connection to the OpenAI API
-OpenAIclient = OpenAI(api_key='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')
+OpenAIclient = OpenAI(api_key='sk-proj-w2gWtVSjhxulFJV3bV8VT3BlbkFJOHvSupHoFPRoKIqA3cFb')
 
 async def generate_persona_with_client_demands(product_info, persona_demands):   
     functions = [

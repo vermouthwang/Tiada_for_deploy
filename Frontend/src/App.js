@@ -13,14 +13,14 @@ function App() {
   const [description, setDescription] = useState('')
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/todo')
+    axios.get('https://backend.yinghou.homes/api/todo')
     .then(res => {
       setTodolist(res.data)
     })
   },[]);
   
   const addTodoHandler = () => {
-    axios.post('http://localhost:8000/api/todo/', {
+    axios.post('https://backend.yinghou.homes/api/todo/', {
       title: title,
       description: description
     })
@@ -46,9 +46,9 @@ function App() {
     <Link to="/generatePersona">
         <button className="btn btn-primary">Generate Persona</button>
     </Link> */}
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">Tiada</a>
-        <Link to="/designUpload">
+    {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        {/* <a className="navbar-brand" href="#">Tiada</a> */}
+        {/* <Link to="/designUpload">
           <button className="btn btn-primary">Upload Design</button>
         </Link>
         <Link to="/generatePersona">
@@ -59,8 +59,8 @@ function App() {
         </Link>
         <Link to="/playsound">
           <button className="btn btn-primary">Sounds</button>
-        </Link>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        </Link> */}
+        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
@@ -70,10 +70,10 @@ function App() {
             </li>
           </ul>
         </div>
-      </nav>
+      </nav> */} 
 
     <div> 
-      {/* link to <a href="http://localhost:8000/api/todo">http://localhost:8000/api/todo</a> */}
+      {/* link to <a href="https://backend.yinghou.homes/api/todo">https://backend.yinghou.homes/api/todo</a> */}
       <Main />
     </div>
     </div>

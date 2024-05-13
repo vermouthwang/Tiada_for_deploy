@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 function TodoItem(props) {
     const deleteTodoHandler = (title) => {
         console.log(title)
-        axios.delete(`http://localhost:8000/api/todo/${title}`)
+        axios.delete(`https://backend.yinghou.homes/api/todo/${title}`)
         .then(res => {
             console.log(res.data);
             props.onDelete(title);

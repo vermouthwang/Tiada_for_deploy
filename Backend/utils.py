@@ -2,7 +2,7 @@ from openai import OpenAI
 import json
 from typing import List
 from model import Persona
-client = OpenAI(api_key='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')
+client = OpenAI(api_key='sk-proj-w2gWtVSjhxulFJV3bV8VT3BlbkFJOHvSupHoFPRoKIqA3cFb')
 
 
 

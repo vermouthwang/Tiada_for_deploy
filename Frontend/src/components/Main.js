@@ -7,6 +7,7 @@ import InterfacesView from '../views/InterfacesView';
 import DoorView from '../views/DoorView';
 import PlaySoundPage from '../views/PlaySoundView';
 import UserPage from '../views/UserPageView';
+import JumpPage from '../views/jumpsubView';
 // import Home from '../pages/Home';
 // import Signup from '../pages/Signup';
 
@@ -19,6 +20,7 @@ const Main = () => {
       <Route exact path='/door' element={<DoorView/>}></Route>
       <Route exact path='/playsound' element={<PlaySoundPage/>}></Route>
       <Route exact path='/user/:userName' element={<UserPage/>}></Route>
+      <Route exact path='/jump' element={<JumpPage/>}></Route>
     </Routes>
   );
 }

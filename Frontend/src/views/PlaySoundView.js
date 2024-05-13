@@ -1,31 +1,32 @@
 import axios from 'axios';
 import React, {useState, useEffect, useRef} from 'react';
 import { pipeline } from '@xenova/transformers';
-// set up home page in react frontend
-// const synthesizer = await pipeline('text-to-speech', 'ylacombe/mms-guj-finetuned-monospeaker', {
-//     quantized: false, // Remove this line to use the quantized version (default)
-// });
 
-// const speaker_embeddings = 'https://huggingface.co/datasets/Xenova/transformers.js-docs/resolve/main/speaker_embeddings.bin';
 function PlaySoundPage(){
 
     const worker = useRef(null);
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const [predictions, setPredictions] = useState([{}])
+    const [predictionlenchange, setPredictionLenChange] = useState(false)
+    const [count, setCount] = useState(0)
     //const [predictionscount, setPredictionsCount] = useState(0)
     const getPredictionLengthHandler = () => {
-        axios.get('http://localhost:8000/api/predictedresponse/count')
+        axios.get('https://backend.yinghou.homes/api/predictedresponse/count')
         .then(res => {
-            if (res.data) {
+            console.log('getting prediction length', res.data)
+            if (res.data === true) {
+                stopSpeech();
+                //refresh the page
                 window.location.reload();
             }
         })
     }
     const getPredictionsHandler = () => {
-        axios.get('http://localhost:8000/api/predictedresponse/audio/all')
+        axios.get('https://backend.yinghou.homes/api/predictedresponse/audio/all')
         .then(res => {
-            setPredictions(res.data)
-            beginSpeech(res.data[0].processed_response)
+            setCount(res.data.length)
+            setPredictions(res.data[res.data.length-1])
+            beginSpeech(res.data[res.data.length-1].processed_response)
         })
     }
 
@@ -37,24 +38,15 @@ function PlaySoundPage(){
 
     useEffect(() => {
         getPredictionsHandler();
-        // if (!worker.current) {
-        //     // Create the worker if it does not yet exist.
-        //     worker.current = new Worker(new URL('./worker.js', import.meta.url), {
-        //         type: 'module'
-        //     });
-        //   }
-      
-        //   // Create a callback function for messages from the worker thread.
-        //   const onMessageReceived = (e) => {
-        //     // TODO: Will fill in later
-        //   };
-      
-        //   // Attach the callback function as an event listener.
-        //   worker.current.addEventListener('message', onMessageReceived);
-      
-        //   // Define a cleanup function for when the component is unmounted.
-        //   return () => worker.current.removeEventListener('message', onMessageReceived);
+
+        const interval = setInterval(() => {
+            getPredictionLengthHandler();
+        }, 100000); // 20000 ms = 20 seconds
+
+        return () => clearInterval(interval);
     }, []);
+
+
     const beginSpeech=(giventext)=>{
         const text = giventext;
         const value = new SpeechSynthesisUtterance(text);
@@ -67,10 +59,10 @@ function PlaySoundPage(){
     // }
     return (
         <div>
-            <h1>Home Page</h1>
+            <h1>Sound Page</h1>
             <p>This is the home page of the task manager app</p>
-            {predictions[0].audience_name}
-            {predictions[0].processed_response}
+            {predictions.audience_name}
+            {predictions.processed_response}
             {/* <button onClick={beginSpeech}>Click me</button> */}
             <button onClick={stopSpeech}>Stop</button>
             <button onClick={getPredictionLengthHandler}>Get Prediction Length</button>

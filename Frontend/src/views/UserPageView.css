@@ -66,13 +66,11 @@
     background: url('../darkgreenbackground.png') rgb(38, 38, 38) 50% / cover no-repeat;
     box-shadow: 5px 4px 4px 0px rgba(43, 42, 42, 0.25) inset, -10px 4px 9.6px 0px rgba(0, 0, 0, 0.25) inset;
     color: #A1FFAB;
-
-font-family: Inter;
-font-size: 10px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-    
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .feedbacktext{

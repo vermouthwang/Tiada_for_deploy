@@ -12,7 +12,7 @@ function GeneratePersonaPage(){
     const [personaList, setPersonaList] = useState([{}])
 
     const generatePersonaHandler = () => {
-        axios.post('http://localhost:8000/api/generate_personas/', {
+        axios.post('https://backend.yinghou.homes/api/generate_personas/', {
              // You'll need to determine how you get this value
             case_name: "Some Case Name",
             collection_name: collection,
@@ -36,7 +36,7 @@ function GeneratePersonaPage(){
     // }, [collection]);
     
     const getPersonaHandler = (collection) => {
-        axios.get(`http://localhost:8000/api/generate_personas/${collection}`)
+        axios.get(`https://backend.yinghou.homes/api/generate_personas/${collection}`)
         .then(res => {
             //console.log(res.data);
             //test any input value to setPersonaList

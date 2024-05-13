@@ -24,7 +24,7 @@ database = client.Personas
 Audience_Response_collection = database.Audience_Response_collection
 Processed_Prediction = database.Predicted_Audience_Response
 Single_Project_Prediction_Collection = database.Single_Project_Prediction_collection
-OpenAIclient = OpenAI(api_key='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')
+OpenAIclient = OpenAI(api_key='sk-proj-w2gWtVSjhxulFJV3bV8VT3BlbkFJOHvSupHoFPRoKIqA3cFb')
 
 async def predict_audience_response_on_projects(project: Design_Project, audience: Audience_doc):
     #args: project: a Design_Project object, audience: a Audience_doc object
@@ -52,19 +52,16 @@ async def predict_audience_response_on_projects(project: Design_Project, audienc
             "content": [
                 {"type": "text", 
                  "text":
-                    f"Here is the person description: {audience.audiencename}.\
+                    f"Here is the person description: {audience.audience_description}.\
                         try to deeply comprehend the characteristics and imagine that you are the person.\
                         Now, I have a design project for you. The project is called {projectname}, created by {projectauthor}\
                         The project description is: {projectdescription}.\
                         The project image is shown belowed.\
-                        Now, you are that person, try to describe what will be your reaction to the project.\
-                        Your response may include but not limited to the following points:\
+                        Now, you are that person, try to briefly describe what will be your reaction to the project in around 100 words.\
+                        Your response may include but not necessary limited by the following points:\
                             1.whether you like the project or not\
-                            2.what do you think of the project\
-                            3.what do you think of the underlying idea (philosophy) of the project\
-                            4.how you might (physically or digirally) interact with the project\
-                            5.what feedback you might give to the project author\
-                            6.any other thoughts you might have on the project."
+                            2.whether this is any connection between the project and you\
+                            3.what do you think of the underlying idea (philosophy) of the project"
                 },
                 {"type": "image_url", 
                  "image_url": {
@@ -77,9 +74,10 @@ async def predict_audience_response_on_projects(project: Design_Project, audienc
     response = OpenAIclient.chat.completions.create(
         model = "gpt-4-turbo",
         messages = message,
-        max_tokens = 100
+        max_tokens = 150
     )
-    await create_single_project_prediction(project["project_name"], audience.audiencename, response.choices[0].message.content)
+
+    await create_single_project_prediction(project["project_name"], audience.audiencename, response.choices[0].message.content) #
     return response.choices[0].message.content
 
     #processed_response = await process_response(audience.audiencename, predicted_result)
@@ -132,11 +130,11 @@ async def all_prediction_and_response(audience: Audience_doc, project_responses:
                     4. any other thoughts they might have on the exhibition. \
                 in the final output, your tone of voice should be a simulator of {audience.audiencename}\
                 as your text will be an audio that played when the audience enter the exhibition, the final response example maybe like:\
-                    'Hi, I am {audience.audiencename}, or let's say, another you. I am so excited to be here.\
+                    'Hi, I am another you. I am so excited to be here.\
                     Technologically speaking, I am a little bit conservative towards AI technology, but I am open to new things.\
                     One of the projects that might be interesting is called..., but I'm also wondering ... '\
                 In addition, the floor plan of the exhibition is shown belowed.\
-                You can add contents related to the overallfloor plan in your response."
+                You can add contents related to the overallfloor plan in your response, your answer should be not more than 250 words."
         }, 
         {
             "role": "user",
@@ -153,6 +151,7 @@ async def all_prediction_and_response(audience: Audience_doc, project_responses:
     response = OpenAIclient.chat.completions.create(
         model = "gpt-4-turbo",
         messages = message,
+        max_tokens = 250
     )
     all_processed_result = response.choices[0].message.content
     new_predicted_audience_response = Predicted_Audience_Response(audience_name=audience.audiencename, processed_response=all_processed_result)

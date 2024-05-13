@@ -1,23 +1,20 @@
 
 .doorbackground{
     display: flex;
-    width: 1024px;
-    height: 1366px;
-    padding: 634px 10px 10px 39px;
+    width: 820px;
+    height: 1180px;
+    padding: 510px 65px 0px 65px;
     flex-direction: column;
     align-items: center;
-    gap: 102px;
-    background-image: url('../iPad-background.png');
+    gap: 36px;
+    background-image: url('../iPad-background2.png');
     background-size: cover;
 }
 .buttondiv{
     display: flex;
-height: 187px;
-padding-left: 301px;
-justify-content: flex-end;
-align-items: center;
-gap: 91px;
-flex-shrink: 0;
+    padding: 46px 87px 46px 345px;
+    align-items: center;
+    gap: 69px;
 }
 .dooraudiobutton{
     width: 150px;
@@ -36,12 +33,11 @@ flex-shrink: 0;
 }
 
 .textdisplay{
-    width: 700px;
-    height: 364px;
+    width: 573px;
+    height: 341px;
     flex-shrink: 0;
     color: #A1FFAB;
     font-family: Helvetica;
-    font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -50,8 +46,8 @@ flex-shrink: 0;
 }
 
 .finaltextdisplay{
-    width: 700px;
-    height: 100px;
+    width: 573px;
+    height: 120px;
     flex-shrink: 0;
     color: #A1FFAB;
     font-family: Helvetica;
@@ -60,7 +56,7 @@ flex-shrink: 0;
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0px;
-    text-align: left;
+    text-align: center;
 }
 
 .audiobutton{

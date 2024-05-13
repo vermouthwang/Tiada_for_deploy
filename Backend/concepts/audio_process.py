@@ -105,7 +105,7 @@ async def update_most_recent_audio_record(audio_note: str):
 
 
 
-OpenAIclient = OpenAI(api_key='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')
+OpenAIclient = OpenAI(api_key='sk-proj-w2gWtVSjhxulFJV3bV8VT3BlbkFJOHvSupHoFPRoKIqA3cFb')
      
 assitence_questions = [
     'Can you introduce yourself? What is your name? What is your age?',
@@ -146,9 +146,14 @@ async def parse_audio_to_audience_notes(audio_note: list[str]):
             {
                 "role": "system",
                 "content": "You are a persona creator. You will be provided with a set of questions and anwsers \
-                    which are conversation with an audience. Based on these set of Q&A, form a description of a 'persona'\
+                    which are conversation dialogs with an audience. Based on these set of Q&A, form around 300 words description of a 'persona'\
                     which should detaily describe and simulate the audience feautures including but not limited to the points that\
-                    are mentioned in the questions."
+                    are mentioned in the questions.\
+                    Because this script is audio generated, the anwsers might be a little bit different from the original response.\
+                    Try to take a guess on the most possible anwsers. and here is some possible words that the audience might say.\
+                    but may be recoreded as wrong spelling or wrong words.\
+                    'GSD', 'Jacob', 'Youtian', 'Treydon', 'Maggie', 'Houhou(Yinghou)','Benson','Allen','Haoheng'\
+                    You can take these as reference to comprehend the audio script."
             },
             {
                 "role": "user",
@@ -166,6 +171,7 @@ async def parse_audio_to_audience_notes(audio_note: list[str]):
         }
     )
     result_args = response.choices[0].message.function_call.arguments
+    print(result_args)
     return json.loads(result_args)
     
     

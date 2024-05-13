@@ -3,17 +3,17 @@ import React from 'react';
 import QRCode from "react-qr-code";
 function UserQRCode({ userName }) {
     // Construct the URL
-    const siteUrl = 'http://localhost:3000/user/';
+    const siteUrl = 'https://frontend.yinghou.homes/user/';
     const userUrl = `${siteUrl}${encodeURIComponent(userName)}`;
 
     return (
-        <div style={{ padding: '2px', opacity: 1, mixBlendMode: 'soft-light' }}>
+        <div style={{ padding: '0px', mixBlendMode: 'normal'}}>
             <QRCode 
                 size={256}
-                style={{ height: "auto", maxWidth: "30%", width: "30%" }}
+                style={{ height: "auto", maxWidth: "40%", width: "40%" }}
                 value={userUrl}
-                viewBox={`0 0 100 100`}
-                bgColor='#8B8383'
+                viewBox={`0 0 110 100`}
+                bgColor='#2E3E2F'
                 level='L'
                 fgColor='#A1FFAB'
             />

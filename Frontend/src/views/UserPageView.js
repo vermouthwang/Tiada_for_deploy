@@ -10,22 +10,21 @@ function UserPage() {
     const [singleproject, setSingleproject] = useState([{}])
     const [feedback, setFeedback] = useState('');
     const handlecontent = () => {
-        axios.get(`http://localhost:8000/api/predictioncontent/${userName}`)
+        axios.get(`https://backend.yinghou.homes/api/predictioncontent/${userName}`)
         .then(res => {
             setContent(res.data);
         });
     }
     const getSingleProjectHandler = () => {
-        axios.get(`http://localhost:8000/api/singleprojectprediction/${userName}`)
+        axios.get(`https://backend.yinghou.homes/api/singleprojectprediction/${userName}`)
         .then(res => {
             console.log(res.data)
             setSingleproject(res.data)
         })
     }
-    
     const submitFeedback = () => {
         //TODO
-        axios.post('http://localhost:8000/api/audiencefeedback/', {
+        axios.post('https://backend.yinghou.homes/api/audiencefeedback/', {
             audience_name: userName,
             feedback: feedback,
         })
